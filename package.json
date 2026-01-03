@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1Marcuth/bigjpg-js.git"
+    "url": "git+https://github.com/marcuth/ts.bigjpg.git"
   },
   "bugs": {
-    "url": "https://github.com/1Marcuth/bigjpg-js/issues"
+    "url": "https://github.com/marcuth/ts.bigjpg/issues"
   },
-  "homepage": "https://github.com/1Marcuth/bigjpg-js#readme",
+  "homepage": "https://github.com/marcuth/ts.bigjpg#readme",
   "devDependencies": {
     "@types/node": "^18.11.18",
     "ts-node": "^10.9.2",
