@@ -1,6 +1,5 @@
-dist/
 node_modules/
-.vscode/
 dist/
-example.ts
-example.js
+*.mp4
+*.png
+*.mp3

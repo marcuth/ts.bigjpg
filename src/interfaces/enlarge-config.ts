@@ -1,8 +1,8 @@
-interface IEnlargeConfig {
-    style: string
-    noise: string
-    x2: string
+import { EnlargeValue, Noise, Style } from "../enums"
+
+export interface EnlargeConfig {
+    style: Style | `${Style}`,
+    noise: Noise | `${Noise}`,
+    x2: EnlargeValue | `${EnlargeValue}`,
     input: string
 }
-
-export default IEnlargeConfig
