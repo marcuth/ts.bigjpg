@@ -1,4 +1,6 @@
-import imageDownloader from "image-downloader"
+import { pipeline } from "node:stream/promises"
+import axios from "axios"
+import fs from "node:fs"
 
 export type BigjpgImageOptions = {
     url: string
@@ -15,10 +17,12 @@ export class BigjpgImage {
     }
 
     async download(filePath: string) {
-        return await imageDownloader.image({
-            url: this.url,
-            dest: filePath,
-            timeout: 0
+        const response = await axios.get(this.url, {
+            responseType: "stream"
         })
+
+        const writer = fs.createWriteStream(filePath)
+        
+        await pipeline(response.data, writer)
     }
 }

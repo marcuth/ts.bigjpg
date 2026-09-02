@@ -1,4 +1,3 @@
-
 import axios from "axios"
 
 import { EnlargeConfig } from "./interfaces/enlarge-config"
