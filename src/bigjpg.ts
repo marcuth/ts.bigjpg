@@ -27,7 +27,7 @@ export class Bigjpg {
 
     constructor({ apiKey, taskCheckDelay }: BigjpgOptions) {
         this.apiKey = apiKey
-        this.taskCheckDelay = taskCheckDelay ?? 500
+        this.taskCheckDelay = taskCheckDelay ?? 2000
     }
 
     async enlarge({
@@ -55,13 +55,17 @@ export class Bigjpg {
 
         const responseData = response.data
 
-        if ("status" in responseData) {
+        if ("status" in responseData && responseData.status !== "ok") {
             const status = responseData.status
 
             if (status === ApiErrorStatus.ValidApiKeyRequired) {
                 throw new BigjpgError("Invalid API token, get your API token on the website by registering 'https://bigjpg.com/' and going to the 'API' section and copying your token that is present in the example code")
             } else if (status === ApiErrorStatus.ParamError) {
                 throw new BigjpgError("Some invalid parameter, check parameters and features available in your account and try again")
+            } else if (status === ApiErrorStatus.RequiresVip) {
+                throw new BigjpgError("VIP account required for this feature or API request")
+            } else {
+                throw new BigjpgError(`Bigjpg API error: ${status}`)
             }
         }
 

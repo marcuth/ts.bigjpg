@@ -23,9 +23,20 @@ export class BigjpgTask {
     async fetchUntilAchieveTheResult() {
         while (true) {
             const response = await axios.get(this.url)
-            const dataResponse = response.data
+            let dataResponse = response.data
 
-            const data = dataResponse[this.taskId]
+            if (typeof dataResponse === "string") {
+                try {
+                    dataResponse = JSON.parse(dataResponse)
+                } catch {}
+            }
+
+            const data = dataResponse?.[this.taskId]
+
+            if (!data) {
+                await sleep(this.checkDelay)
+                continue
+            }
 
             const status = data.status
 
@@ -35,7 +46,7 @@ export class BigjpgTask {
                 throw new BigjpgError("Error processing the image!")
             }
 
-            await sleep(.5)
+            await sleep(this.checkDelay)
         }
     }
 }
