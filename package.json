@@ -1,6 +1,6 @@
 {
   "name": "bigjpg",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "API Wrapper for bigjpg.com",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
