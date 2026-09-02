@@ -10,7 +10,8 @@
     "!/**/__tests__"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "keywords": [
     "bigjpg",
@@ -31,7 +32,11 @@
   },
   "homepage": "https://github.com/marcuth/ts.bigjpg#readme",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^18.19.130",
+    "dotenv": "^17.4.2",
+    "jest": "^30.5.1",
+    "ts-jest": "^29.4.12",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }

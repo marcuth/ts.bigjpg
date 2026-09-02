@@ -3,3 +3,4 @@ dist/
 *.mp4
 *.png
 *.mp3
+.env
