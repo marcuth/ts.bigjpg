@@ -1,6 +1,7 @@
 import { pipeline } from "node:stream/promises"
 import axios from "axios"
 import fs from "node:fs"
+import path from "node:path"
 
 export type BigjpgImageOptions = {
     url: string
@@ -17,12 +18,22 @@ export class BigjpgImage {
     }
 
     async download(filePath: string) {
+        const dir = path.dirname(filePath)
+        if (dir && !fs.existsSync(dir)) {
+            await fs.promises.mkdir(dir, { recursive: true })
+        }
+
         const response = await axios.get(this.url, {
             responseType: "stream"
         })
 
         const writer = fs.createWriteStream(filePath)
         
-        await pipeline(response.data, writer)
+        try {
+            await pipeline(response.data, writer)
+        } catch (error) {
+            await fs.promises.unlink(filePath).catch(() => {})
+            throw error
+        }
     }
 }

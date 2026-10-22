@@ -11,6 +11,7 @@
     "rootDir": "./src",
     "declaration": true,
     "declarationMap": false,
+    "isolatedModules": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

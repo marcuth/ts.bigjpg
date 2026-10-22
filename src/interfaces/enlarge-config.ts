@@ -4,5 +4,6 @@ export interface EnlargeConfig {
     style: Style | `${Style}`,
     noise: Noise | `${Noise}`,
     x2: EnlargeValue | `${EnlargeValue}`,
-    input: string
+    input: string,
+    file_name?: string
 }
